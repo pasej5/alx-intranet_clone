@@ -20,23 +20,48 @@
           <form
             class="sm_gap"
             id="new_user"
-            action="url_sign_in"
+            action="{% url 'login' %}"
             accept-charset="UTF-8"
             method="post"
           >
-            <input type="hidden" name="username" placeholder="Username" />
+            {% csrf_token %}
             <div class="login_field">
-              <label class="control-label" for"user_email">Email</label>
-              <br>
-              <input type="text" name="username" placeholder="Useremail">
+              <label class="control-label" for="user_email">Email</label>
+              <br />
+              <input type="text" name="username" placeholder="Email" />
             </div>
-            <div class="login_field" >
-              <label class="control-label" for"user_password">Password</label>
-              <br>
-              <input type="text" name="username" placeholder="Password">
+            <div class="login_field">
+              <label class="control-label" for="user_password">Password</label>
+              <br />
+              <input
+                type="password"
+                name="user_password"
+                placeholder="Password"
+              />
             </div>
+            <div class="login_field">
+              <input
+                type="checkbox"
+                value="1"
+                name="remember_me"
+                placeholder=""
+              />
+              <label class="control-label" for="user_remember_me"
+                >Remember me
+              </label>
+            </div>
+            <div class="login_action">
+              <button type="submit">Login</button>
+            </div>
+          </form>
+          <ul class="forgot_password">
+            <li>
+              <a href="password_url_routees">Forgot your password?</a>
+            </li>
+          </ul>
         </div>
       </article>
+      <div class="copyright">Copyright © 2024 ALX, All rights reserved.</div>
     </main>
   </body>
 </html>
