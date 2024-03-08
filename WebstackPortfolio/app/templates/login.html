@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>alx Sessions - new | Intranet</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body class="env_production">
+    <main>
+      <div id="layout-bars"></div>
+      <article class>
+        <div class="logged_out_form">
+          <h2 class="hbtn_logo"></h2>
+          <form
+            class="sm_gap"
+            id="new_user"
+            action="url_sign_in"
+            accept-charset="UTF-8"
+            method="post"
+          >
+            <input type="hidden" name="username" placeholder="Username" />
+            <div class="field_1">
+              <label class="control-label" for"user_email">Email</label>
+              <br>
+            </div>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
