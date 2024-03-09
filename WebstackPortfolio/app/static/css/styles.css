@@ -30,11 +30,13 @@ body {
   background-color: blueviolet;
   color: white;
   padding: 10px 10px;
-  width: 95%;
+  width: 40%;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
 }
 
 .logged_out_form button:hover {
@@ -53,7 +55,7 @@ body {
 }
 
 .forgot_password a {
-  color: #00c3ff;
+  color: #ff2a00;
   text-decoration: none;
 }
 
@@ -64,4 +66,26 @@ body {
   text-align: center;
   display: block;
   margin-bottom: 10px;
+}
+.logged_out_form label {
+  text-align: center;
+}
+.copyright {
+  text-align: right;
+  padding-right: 40px;
+  font-weight: 14px;
+}
+.control-label {
+  font-weight: bold;
+}
+.login_field input[type='checkbox'] {
+  vertical-align: middle;
+}
+.logged_out_form label.control-label {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.logged_out_form input[type='text'],
+.logged_out_form input[type='password'] {
+  margin-bottom: 0px;
 }
