@@ -1,0 +1,89 @@
+/* Targeting elements */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+/* Targeting classes */
+.pending_log {
+  margin: 20px;
+}
+
+.gap {
+  margin-top: 10px;
+}
+
+.form-horizontal {
+  width: 100%;
+}
+
+.profile_pic img {
+  width: 100px;
+  height: 100px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.control-label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.help-block {
+  font-style: italic;
+  color: #888;
+}
+
+.gap_user_info {
+  margin-top: 20px;
+}
+
+.submit-file input[type='submit'] {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px 10px;
+  width: 40%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+.submit-file input[type='submit']:hover {
+  background-color: #0056b3;
+  box-shadow: 6px 6px 6px red;
+}
+
+.submit-file input[type='submit']:active {
+  background-color: rgba(0, 0, 255, 0.945);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 50px;
+  font-style: italic;
+  color: #888;
+}
