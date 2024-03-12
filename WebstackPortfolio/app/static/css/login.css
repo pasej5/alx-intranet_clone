@@ -1,0 +1,108 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+.logged_out_form {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logged_out_form input[type='text'],
+.logged_out_form input[type='password'] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.logged_out_form button {
+  background-color: blueviolet;
+  color: white;
+  padding: 10px 10px;
+  width: 60%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+.logged_out_form button:hover {
+  background-color: #0056b3;
+  box-shadow: 6px 6px 6px red;
+}
+
+.logged_out_form button:active {
+  background-color: rgba(0, 0, 255, 0.945);
+}
+
+.forgot_password {
+  margin-top: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+.forgot_password a {
+  color: #be8b81;
+  text-decoration: none;
+}
+
+.forgot_password a:hover {
+  text-decoration: underline;
+}
+.logged_out_form .login_field label {
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+.logged_out_form label {
+  text-align: center;
+}
+.copyright {
+  text-align: right;
+  padding-right: 40px;
+  font-weight: 14px;
+}
+.control-label {
+  font-weight: bold;
+}
+.login_field input[type='checkbox'] {
+  vertical-align: middle;
+}
+.logged_out_form label.control-label {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.logged_out_form input[type='text'],
+.logged_out_form input[type='password'] {
+  margin-bottom: 0px;
+}
+h2.my_logo img {
+  width: 100px !important;
+  margin: 0 auto;
+}
+h2.my_logo {
+  text-align: center;
+}
+.field {
+  text-align: center;
+}
+.field input[type='checkbox'],
+.login_action input[type='submit'] {
+  display: inline-block;
+}
+.login_action {
+  text-align: center;
+}

@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{% static 'css/styles.css' %}"
+      href="{% static 'css/login.css' %}"
     />
   </head>
   <body class="env_production">
@@ -16,8 +16,8 @@
       <div id="layout-bars"></div>
       <article class>
         <div class="logged_out_form">
-          <h2 class="hbtn_logo">
-            <img src="{% static 'images/login_png.png' %}" alt="ALX LOGO" />
+          <h2 class="my_logo">
+            <img src="{% static 'images/my_png.jpg' %}" alt="ALX LOGO" />
           </h2>
           <form
             class="sm_gap"
@@ -40,21 +40,16 @@
                 name="user_password"
                 placeholder="Password"
               />
-            </div>
-            <div class="login_field">
-              <input
-                type="checkbox"
-                value="1"
-                name="remember_me"
-                placeholder=""
-              />
-              <label class="control-label" for="user_remember_me"
-                >Remember me
-              </label>
-            </div>
-            <div class="login_action">
-              <button type="submit">Login</button>
-            </div>
+                </div>
+                <div class="field">
+                  <input name="user[remember_me]" type="hidden" value="0" autocomplete="off"><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me">
+                  <label class="control-label" for="user_remember_me">Remember me</label>
+                </div>
+                
+                <div class="login_action">
+                  <input type="submit" name="commit" value="Log in" class="btn btn-primary" data-disable-with="Log in">
+                </div>
+                </div>
           </form>
           <ul class="forgot_password">
             <li>
