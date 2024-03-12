@@ -87,7 +87,7 @@ body {
 }
 .logged_out_form input[type='text'],
 .logged_out_form input[type='password'] {
-  margin-bottom: 0px;
+  margin-bottom: 15px;
 }
 h2.my_logo img {
   width: 100px !important;
@@ -98,10 +98,20 @@ h2.my_logo {
 }
 .field {
   text-align: center;
+  margin-bottom: 15px;
 }
-.field input[type='checkbox'],
 .login_action input[type='submit'] {
   display: inline-block;
+  background-color: blueviolet;
+  color: white;
+  padding: 10px 10px;
+  width: 30%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto;
 }
 .login_action {
   text-align: center;
