@@ -26,28 +26,6 @@ body {
   border-radius: 3px;
 }
 
-.logged_out_form button {
-  background-color: blueviolet;
-  color: white;
-  padding: 10px 10px;
-  width: 60%;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: block;
-  margin: 0 auto;
-}
-
-.logged_out_form button:hover {
-  background-color: #0056b3;
-  box-shadow: 6px 6px 6px red;
-}
-
-.logged_out_form button:active {
-  background-color: rgba(0, 0, 255, 0.945);
-}
-
 .forgot_password {
   margin-top: 20px;
   list-style: none;
@@ -55,10 +33,10 @@ body {
 }
 
 .forgot_password a {
+  margin-top: 10px;
   color: #be8b81;
   text-decoration: none;
 }
-
 .forgot_password a:hover {
   text-decoration: underline;
 }
@@ -74,6 +52,7 @@ body {
   text-align: right;
   padding-right: 40px;
   font-weight: 14px;
+  margin-top: 120px;
 }
 .control-label {
   font-weight: bold;
@@ -113,6 +92,14 @@ h2.my_logo {
   display: block;
   margin: 0 auto;
 }
+.login_action input[type='submit']:hover {
+  background-color: #0056b3;
+  box-shadow: 6px 6px 6px red;
+}
 .login_action {
   text-align: center;
+}
+
+.login_action input[type='submit']:active {
+  background-color: rgba(0, 0, 255, 0.945);
 }
