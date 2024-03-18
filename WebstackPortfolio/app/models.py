@@ -3,8 +3,6 @@ Import django database module
 """
 from django.db import models
 
-# Create your models here.
-
 # User model
 class User(models.Model):
     """
@@ -83,4 +81,3 @@ class Servers(models.Model):
     user_id = models.IntegerField()
     server_user_name = models.CharField(max_length=100)
     server_ip = models.CharField(max_length=15)
-    
