@@ -46,3 +46,10 @@ def sandboxes(request):
     sandboxes and their details to the user
     """
     return render(request, "sandbox.html")
+
+def projects(request):
+    """
+    Fetches the projects and the tasks
+    sor far done by a user
+    """
+    return render(request, "projects.html")
