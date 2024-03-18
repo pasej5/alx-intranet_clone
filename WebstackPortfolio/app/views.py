@@ -1,20 +1,48 @@
+"""
+Import HTTP Response and render for
+internals
+"""
 from django.http import HttpResponse
 from django.shortcuts import render
 
 # A view No template.
 
-"""
-Context for the login page
-"""
 def login(request):
+    """
+    This function handles the login page request
+    """
     return render(request, 'login.html')
 
 
-"""
-Context for the dashboard
-"""
 def dashboard(request):
+    """
+    This function handles dashbord request
+    """
     return render(request, 'dashboard.html')
 
 def profile(request):
+    """
+    This function handles a profile page request
+    """
     return render(request, 'profile.html')
+
+def servers(request):
+    """
+    This function returns the servers that 
+    belong to a particular user
+    """
+    return render(request, 'servers.html')
+
+def concepts(request):
+    """
+    This function returns concepts that
+    a user has to cover
+    """
+    return render(request, "concepts.html")
+
+def sandboxes(request):
+    """
+    This returns the available
+    sandboxes and their details to the user
+    """
+    return render(request, "sandbox.html")
