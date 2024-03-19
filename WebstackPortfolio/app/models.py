@@ -59,6 +59,8 @@ class Tasks(models.Model):
     project = models.ForeignKey(Project, default=None, on_delete=models.PROTECT)
     task_id = models.IntegerField()
     task_name = models.CharField(max_length=100)
+    task_content = models.CharField(max_length=5000)
+    task_requirements = models.CharField(max_length=1000)
 
     def __str__(self) -> str:
         return f"{self.task_name}"

@@ -2,7 +2,7 @@
 Import HTTP Response and render for
 internals
 """
-from django.http import HttpResponse
+#from django.http import HttpResponse
 from django.shortcuts import render
 
 # A view No template.
