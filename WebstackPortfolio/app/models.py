@@ -33,6 +33,7 @@ class User(models.Model):
     cohort = models.ForeignKey(Cohort, default=None, on_delete=models.PROTECT)
     date_registered = models.DateField()
     user_discord = models.CharField(max_length=100)
+    github_username = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
