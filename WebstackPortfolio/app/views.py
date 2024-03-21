@@ -56,3 +56,6 @@ def projects(request):
 
 def homepage(request):
     return render(request, 'homepage.html')
+
+def sandboxes(request):
+    return render(request, 'sandboxes.html')
