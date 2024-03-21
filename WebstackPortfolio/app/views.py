@@ -53,3 +53,6 @@ def projects(request):
     sor far done by a user
     """
     return render(request, "projects.html")
+
+def homepage(request):
+    return render(request, 'homepage.html')
