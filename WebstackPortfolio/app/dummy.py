@@ -1,98 +1,75 @@
-import models
+from django.utils import timezone
+from app.models import Cohort, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
 
+# Create a cohort
+cohort1 = Cohort.objects.create(cohort_name='C1')
 
-cohorts = {
-    "cohort 13" : models.Cohort(cohort_name="C13"),
-    "cohort 12" : models.Cohort(cohort_name="C12"),
-    "cohort 11" : models.Cohort(cohort_name="C11")
-        }
+# Create a user
+user1 = User.objects.create(
+    first_name='John',
+    last_name='Doe',
+    user_name='johndoe',
+    user_gender='M',
+    user_status='ACTIVE',
+    cohort=cohort1,
+    date_registered=timezone.now(),
+    user_discord='johndoe#1234',
+    github_username='johndoe'
+)
 
-users = {
-    "first_user" : models.User(
-        first_name="Namwamba",
-        last_name="Marvin",
-        user_name="shantmarvis",
-        user_gender="male",
-        user_status="Active",
-        cohort=cohorts["cohort 13"],
-        date_registered="2023-01-01",
-        user_discord="marvin.2002",
-        github_username="NamwambaMarvin",
-        ),
-    "first_user" : models.User(
-        first_name="Nalweyiso",
-        last_name="Mary",
-        user_name="NalMary",
-        user_gender="female",
-        user_status="Active",
-        cohort=cohorts["cohort 12"],
-        date_registered="2023-03-24",
-        user_discord="NalweyisoMary",
-        github_username="NalweyisoMary"
-        )
-}
+# Create a project
+project1 = Project.objects.create(
+    project_id=1,
+    project_name='Project 1',
+    cohort=cohort1
+)
 
-projects = {
-    "project_name" : models.Project(
-        project_id=1001,
-        project_name="Python",
-        cohort=cohorts["cohort 13"]
-    )
-}
+# Create a task
+task1 = Tasks.objects.create(
+    project=project1,
+    task_id=1,
+    task_name='Task 1',
+    task_content='This is task 1',
+    task_requirements='These are the requirements for task 1'
+)
 
-tasks = {
-    "task1": models.Project(
-        project=projects["project_name"],
-        task_id=1,
-        task_name="Introduction to python",
-        task_content="Hello from python",
-        task_requirements="Install emacs and python on your system",
-    )
-}
+# Create a mark
+mark1 = Marks.objects.create(
+    user=user1,
+    task=task1,
+    project=project1,
+    mark=85,
+    solution_url='https://github.com/johndoe/project1',
+    month_id=1
+)
 
-marks = [
+# Create an event
+event1 = Events.objects.create(
+    event_id=1,
+    event_name='Event 1',
+    event_time=timezone.now().time(),
+    event_date=timezone.now().date(),
+    event_url='https://event1.com'
+)
 
-    models.Marks(
-        user=,
-        task=,
-        project=,
-        mark=,
-        solution_url=,
-        month_id=,
-    ),
-]
-events = [
-    models.Events(
-        event_id=,
-        event_name=,
-        event_time=,
-        event_date=,
-        event_url=,
+# Create a server
+server1 = Servers.objects.create(
+    user=user1,
+    server_user_name='johndoe',
+    server_ip='192.168.1.1'
+)
 
-    )
-]
+# Create a concept
+concept1 = Concepts.objects.create(
+    cohort=cohort1,
+    concept_title='Concept 1',
+    concept_content='This is concept 1'
+)
 
-concepts = [
-    models.Concepts(
-        cohort=,
-        concept_title=,
-        concept_content=,
-    )
-]
-
-sandbox = [
-    models.Sandbox(
-        user=,
-        sandbox_name=,
-        sandbox_detail=,
-        sandbox_url=,
-    )
-]
-
-servers = [
-    models.Servers(
-        user=,
-        server_user_name=,
-        server_ip=,
-    ),
-]
+# Create a sandbox
+sandbox1 = Sandbox.objects.create(
+    user=user1,
+    sandbox_name='Sandbox 1',
+    sandbox_detail='This is sandbox 1',
+    sandbox_url='https://sandbox1.com'
+)
