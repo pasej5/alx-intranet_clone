@@ -53,3 +53,10 @@ def projects(request):
     sor far done by a user
     """
     return render(request, "projects.html")
+
+def tasks(request, project_ID):
+    """
+    This function fetches tasks in a given
+    project
+    """
+    return render(request, 'tasks.html')
