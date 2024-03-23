@@ -54,6 +54,12 @@ def projects(request):
     """
     return render(request, "projects.html")
 
+def homepage(request):
+    return render(request, 'homepage.html')
+
+def sandboxes(request):
+    return render(request, 'sandboxes.html')
+
 def tasks(request, project_ID):
     """
     This function fetches tasks in a given

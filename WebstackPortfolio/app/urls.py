@@ -10,5 +10,7 @@ urlpatterns = [
     path('concepts/', views.concepts, name='concepts'),
     path('sandboxes/', views.sandboxes, name='sandboxes'),
     path('servers/', views.servers, name='servers'),
-    path('tasks/<int:project_ID>', views.tasks, name='tasks')
+    path('tasks/<int:project_ID>', views.tasks, name='tasks'),
+    path('homepage/', views.homepage, name='homepage'),
+    path('sandboxes', views.sandboxes, name='sandboxes')
 ]
