@@ -49,7 +49,7 @@ def sandboxes(request):
     This returns the available
     sandboxes and their details to the user
     """
-    return render(request, "sandbox.html")
+    return render(request, "sandboxes.html")
 
 def projects(request):
     """
