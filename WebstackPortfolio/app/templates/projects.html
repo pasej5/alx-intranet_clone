@@ -1,40 +1,48 @@
 {% extends 'sidepane.html' %}
 {% block headercontent %}
-<script> 
-  $(document).ready(function(){
-    $("#flip").click(function(){
+<script>
+  $(document).ready(function () {
+    $("#flip").click(function () {
       $("#panel").slideToggle("slow");
     });
   });
-  </script>
-  <style> 
-  #panel, #flip {
+</script>
+<style>
+  #panel,
+  #flip {
     padding: 5px;
     background-color: #e5eecc;
     border: solid 1px #c3c3c3;
     cursor: pointer;
   }
-  
+
   #panel {
     padding: 5px;
     display: none;
   }
-  </style>
+
+  .stu {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+</style>
 {% endblock %}
 {% block content %}
-<h1> My Projects</h1>
-<div class="card">
-  <div class="bg-success">Current task is here</div>
-</div>
-<h1> All Projects</h1>
-<div class="card">
-  <div id="flip" class="card-header">
-    Click to see tasks
+<div class="stu">
+  <h1> My Projects</h1>
+  <div class="card">
+    <div class="bg-success">Current task is here</div>
   </div>
-  <ul id="panel" class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
+  <h1> All Projects</h1>
+  <div class="card">
+    <div id="flip" class="card-header">
+      Click to see tasks
+    </div>
+    <ul id="panel" class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+  </div>
 </div>
 {% endblock %}

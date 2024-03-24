@@ -1,0 +1,51 @@
+{% include 'sidepane.html' %}
+
+{% block headercontent %}
+<style>
+    .d-grid {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .p-2 {
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .card-header {
+        background-color: gray;
+    }
+
+    .card-body {
+        border-width: 1px;
+        border-style: solid;
+        border-color: gray;
+        border-radius: 3px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="d-grid gap-3">
+    <div class="p-2 border">
+        <div class="card  text-center">
+            <div class="card-header">
+                Linux Server
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Server IP : </h5>
+                <p class="card-text">Server Username : </p>
+                <button href="#" class="btn btn-default">Request Server</button>
+                <button href="#" class="btn btn-success">Refresh</button>
+                <button href="#" class="btn btn-danger">Delete Server</button>
+              </div>
+            <div class="card-footer text-muted">
+                
+            </div>
+        </div>
+    </div>
+    <div class="p-2 bg-light border">Sandbox Total: 1</div>
+</div>
+
+{% endblock %}

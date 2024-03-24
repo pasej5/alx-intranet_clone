@@ -1,23 +1,30 @@
 {% extends 'sidepane.html' %}
 {% block headercontent %}
-
+<style>
+    .stu {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-<h1> Concepts </h1>
-<div class="text-center">
-    <table class="table table-bordered">
-        <tbody>
-        <tr>
-            <td>John</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-        </tr>
-        <tr>
-            <td>July</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="stu">
+    <h1> Concepts </h1>
+    <div class="text-center">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>John</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

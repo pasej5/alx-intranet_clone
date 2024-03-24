@@ -1,11 +1,7 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My profile | Johannesburg</title>
-    <link
+{% include 'sidepane.html' %}
+{% block headercontent %}
+<link
       rel="icon"
       href="{% static 'images/profile.ico' %}"
       type="image/x-icon"
@@ -15,8 +11,8 @@
       type="text/css"
       href="{% static 'css/profile.css' %}"
     />
-  </head>
-  <body>
+{% endblock %}
+{% block content %}
     <main>
       <article class="pending_log">
         <h1>My profile</h1>
@@ -210,5 +206,4 @@
       </article>
       <div class="copyright">Copyright 2024</div>
     </main>
-  </body>
-</html>
+ {% endblock %}
