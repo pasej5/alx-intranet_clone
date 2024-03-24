@@ -58,9 +58,11 @@
             </thead>
             {% for mark in marks %}
             <tbody>
-              {% if marks.mark < 70 %}
+              {% if mark.mark < 70 %}
               <tr class="danger">
-                Month#{{mark.month_id}}<td class="text-end">{{mark.mark}}<i class='fa fa-times-circle' style="color:red"></i></td>
+                <td>
+                  Month#{{mark.month_id}}<td class="text-end">{{mark.mark}}<i class='fa fa-times-circle' style="color:red"></i></td>
+                </td>
               </tr>
               {% else %}
               <tr>
