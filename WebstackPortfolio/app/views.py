@@ -18,7 +18,7 @@ def dashboard(request):
     """
     This function handles dashbord request
     """
-    myuser = User.objects.get(pk=1)
+    myuser = User.objects.get(pk=7)
     context = {
         "marks" : Marks.objects.filter(user=myuser)
         }

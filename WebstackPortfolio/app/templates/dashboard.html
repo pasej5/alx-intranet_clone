@@ -53,18 +53,20 @@
           <table class="table table-bordered">
             <thead>
               <tr class="active">
-                <th>Scores - SE Foundations</th>
+                <th>SE Foundations</th><th>Score</th>
               </tr>
             </thead>
             {% for mark in marks %}
             <tbody>
               {% if marks.mark < 70 %}
               <tr class="danger">
-                <td>Month#{{mark.month_id}}            {{mark.mark}}</td>
+                Month#{{mark.month_id}}<td class="text-end">{{mark.mark}}<i class='fa fa-times-circle' style="color:red"></i></td>
               </tr>
               {% else %}
               <tr>
-                <td>Month#{{mark.month_id}}            {{mark.mark}}</td>
+                <td>
+                  Month#{{mark.month_id}}<td class="text-end">{{mark.mark}}<i class='fa fa-check-circle' style="color:green"></i></td>
+                </td>
               </tr>
               {% endif %}
             {% endfor %}
