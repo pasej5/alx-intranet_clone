@@ -94,8 +94,6 @@ for j in range(1, 50):
         pks = Tasks.objects.values_list('pk', flat=True)
         random_pk = choice(pks)
         task = Tasks.objects.get(pk=random_pk)
-
-
         #Catch a bug
         try:
             myuser=User.objects.get(first_name=f'User{j}')
@@ -112,4 +110,3 @@ for j in range(1, 50):
         except:
             print(f'User{j} is not found')
             j += 1
-

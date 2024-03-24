@@ -56,16 +56,18 @@
                 <th>Scores - SE Foundations</th>
               </tr>
             </thead>
+            {% for mark in marks %}
             <tbody>
+              {% if marks.mark < 70 %}
               <tr class="danger">
-                <td>John</td>
+                <td>Month#{{mark.month_id}}            {{mark.mark}}</td>
               </tr>
+              {% else %}
               <tr>
-                <td>Mary</td>
+                <td>Month#{{mark.month_id}}            {{mark.mark}}</td>
               </tr>
-              <tr>
-                <td>July</td>
-              </tr>
+              {% endif %}
+            {% endfor %}
             </tbody>
           </table>
         </section>

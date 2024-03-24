@@ -4,7 +4,7 @@ internals
 """
 #from django.http import HttpResponse
 from django.shortcuts import render
-
+from app.models import Cohort, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
 # A view No template.
 
 def login(request):
@@ -18,7 +18,11 @@ def dashboard(request):
     """
     This function handles dashbord request
     """
-    return render(request, 'dashboard.html')
+    myuser = User.objects.get(pk=1)
+    context = {
+        "marks" : Marks.objects.filter(user=myuser)
+        }
+    return render(request, 'dashboard.html', context=context)
 
 def profile(request):
     """
@@ -56,9 +60,6 @@ def projects(request):
 
 def homepage(request):
     return render(request, 'homepage.html')
-
-def sandboxes(request):
-    return render(request, 'sandboxes.html')
 
 def tasks(request, project_ID):
     """
