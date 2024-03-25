@@ -7,13 +7,6 @@ from django.shortcuts import render
 from app.models import Cohort, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
 # A view No template.
 
-def login(request):
-    """
-    This function handles the login page request
-    """
-    return render(request, 'login.html')
-
-
 def dashboard(request):
     """
     This function handles dashbord request
