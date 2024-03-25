@@ -1,64 +1,64 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>alx Sessions - new | Intranet</title>
-    <link rel="icon" href="{% static 'images/login.ico' %}" type="image/x-icon">
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/login.css' %}"
-    />
-  </head>
-  <body class="env_production">
-    <main>
-      <div id="layout-bars"></div>
-      <article class>
-        <div class="logged_out_form">
-          <h2 class="my_logo">
-            <img src="{% static 'images/my_png.jpg' %}" alt="ALX LOGO" />
-          </h2>
-          <form
-            class="sm-gap"
-            id="new_user"
-            action="{% url 'login' %}"
-            accept-charset="UTF-8"
-            method="post"
-          >
-            {% csrf_token %}
-            <div class="login_field">
-              <label class="control-label" for="user_email">Email</label>
-              <br />
-              <input type="text" name="username"/>
-            </div>
-            <div class="login_field">
-              <label class="control-label" for="user_password">Password</label>
-              <br />
-              <input
-                type="password"
-                name="user_password" 
-              />
-                </div>
-                <div class="field">
-                  <input type="hidden" autocomplete="off"><input type="checkbox" value="1">
-                  <label class="control-label" for="user_remember_me">Remember me</label>
-                </div>
-                
-                <div class="login_action">
-                  <input type="submit" name="commit" >
-                </div>
-                </div>
-          </form>
-          <ul class="forgot_password">
-            <li>
-              <a href="">Forgot your password?</a>
-            </li>
-          </ul>
+<html>
+
+<head>
+  {% include 'header.html' %}
+</head>
+<style>
+  .card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: 20%;
+    padding-top: 5%;
+  }
+  .card {
+    background-color: rgb(249, 249, 249);
+    text-align: center;
+    margin-left: 32%;
+    margin-right: 32%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    border-style: solid;
+    border-radius: 2%;
+    border-color: rgb(226, 226, 226);
+    border-width: 1px;
+    box-shadow: 5px 5px 10px rgb(226, 226, 226);
+  }
+  form {
+    padding-top: 10%;
+    padding-bottom: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+</style>
+<body>
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/my_png.jpg' %}" alt="Card image cap">
+    <div class="card-body">
+      <form class="text-center">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-      </article>
-      <div class="copyright">Copyright © 2024 OLX, All rights reserved.</div>
-    </main>
-  </body>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </form>
+      <div style="color: red; padding-bottom: 5%;">Forgot password?</div>
+    </div>
+  </div>
+
+</body>
+
 </html>
