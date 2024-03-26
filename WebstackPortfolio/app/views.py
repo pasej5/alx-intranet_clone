@@ -56,7 +56,12 @@ def projects(request):
     Fetches the projects and the tasks
     sor far done by a user
     """
-    return render(request, "projects.html")
+    # Get all project
+    project = Tasks.objects.all()
+    context = {
+        'projects' : project,
+    }
+    return render(request, "projects.html", context=context)
 
 @login_required
 def homepage(request):
@@ -68,4 +73,11 @@ def tasks(request, project_ID):
     This function fetches tasks in a given
     project
     """
-    return render(request, 'tasks.html')
+    s_project = Project.objects.get(project_id = project_ID)
+    my_tasks = Tasks.objects.filter(project = s_project) # Fetch tasks
+    number = my_tasks.count() # Number of tasks
+    context = {
+        'tasks': my_tasks,
+        'n': number
+    }
+    return render(request, 'tasks.html', context=context)

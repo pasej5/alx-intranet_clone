@@ -21,15 +21,11 @@ class User(models.Model):
     This is the user table, it contains details
     about our users.
     """
-    gender_choices = (
-        ("MALE", "male"),
-        ("FEMALE", "female")
-        )
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     user_name = models.CharField(max_length=10)
     user_gender = models.CharField(max_length=1)
-    user_status = models.CharField(max_length=6, choices=gender_choices)
+    user_status = models.CharField(max_length=6)
     cohort = models.ForeignKey(Cohort, default=None, on_delete=models.PROTECT)
     date_registered = models.DateField()
     user_discord = models.CharField(max_length=100)
@@ -60,8 +56,8 @@ class Tasks(models.Model):
     project = models.ForeignKey(Project, default=None, on_delete=models.PROTECT)
     task_id = models.IntegerField()
     task_name = models.CharField(max_length=100)
-    task_content = models.CharField(max_length=5000)
-    task_requirements = models.CharField(max_length=1000)
+    task_content = models.TextField(max_length=5000)
+    task_requirements = models.TextField(max_length=1000)
 
     def __str__(self) -> str:
         return f"{self.task_name}"
@@ -136,3 +132,13 @@ class Sandbox(models.Model):
 
     def __str__(self) -> str:
         return f"{self.sandbox_name}"
+
+ 
+class CurrentTasks(models.Model):
+    """
+        This model issue a task command center for all cohorts.
+    """
+    day = models.IntegerField()
+    month = models.IntegerField()
+    cohort_name = models.ForeignKey(Cohort, on_delete=models.PROTECT)
+    project = models.ForeignKey(Project, default=None, on_delete=models.PROTECT)

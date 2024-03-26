@@ -1,11 +1,11 @@
 {% extends 'sidepane.html' %}
 {% block headercontent %}
 <script>
-  $(document).ready(function () {
-    $("#flip").click(function () {
-      $("#panel").slideToggle("slow");
-    });
-  });
+  function toggle(p)
+  {
+    $($(p).parent().children('ul')).slideToggle("slow");
+  }
+  
 </script>
 <style>
   #panel,
@@ -34,15 +34,19 @@
     <div class="bg-success">Current task is here</div>
   </div>
   <h1> All Projects</h1>
+  {% regroup projects by project as user_projects %}
+  {% for project in user_projects %}
   <div class="card">
-    <div id="flip" class="card-header">
-      Click to see tasks
+    <div id="flip" class="card-header" onclick="toggle(this)">
+      {{project.grouper}}
     </div>
-    <ul id="panel" class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+    
+    <ul id='panel' class="list-group list-group-flush">
+      {% for task in project.list %}
+      <li class="list-group-item">{{ task.task_name }}</li>
+      {% endfor %}
     </ul>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}
