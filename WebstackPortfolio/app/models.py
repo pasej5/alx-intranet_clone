@@ -30,7 +30,7 @@ class User(models.Model):
     date_registered = models.DateField()
     user_discord = models.CharField(max_length=100)
     github_username = models.CharField(max_length=100)
-
+    
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -142,3 +142,6 @@ class CurrentTasks(models.Model):
     month = models.IntegerField()
     cohort_name = models.ForeignKey(Cohort, on_delete=models.PROTECT)
     project = models.ForeignKey(Project, default=None, on_delete=models.PROTECT)
+
+class PeerLearning(models.Model):
+    date = models.DateField()

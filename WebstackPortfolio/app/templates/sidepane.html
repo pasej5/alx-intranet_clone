@@ -36,14 +36,16 @@
                 <li><a href="#">Other tools</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Interactions<span class="caret"></span></a>
+            <!--
+            <li class="dropdown-toggle">
+              <a class="disabled" data-toggle="dropdown" href="#">Interactions<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Peer Feedback</a></li>
                 <li><a href="#">Your peers</a></li>
                 <li><a href="#">Conference rooms</a></li>
               </ul>
             </li>
+          -->
             <!--
             <li><a href="#">Page 2</a></li>
             <li><a href="#">Page 3</a></li>
@@ -52,7 +54,7 @@
 	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
             <li><a href="https://discord.app"><span class="fa-brands fa-discord"></span> Discord</a></li>
-            <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> {{request.user.username}}</a></li>
             <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 	  </ul>
 	</div>

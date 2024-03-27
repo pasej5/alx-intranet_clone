@@ -56,6 +56,7 @@
                 <h5 class="card-title">{{ task.task_requirements }}</h5>
                 <p class="card-text">{{ task.task_content }}</p>
                 <button href="#" class="btn btn-default but" onclick="uncheck(this)"><i class='fa fa-square-o'></i>Done!</button>
+                <a href="{% url 'sandboxes' %}" class="btn btn-default but">Get SandBox</a>
             </div>
             <div class="card-footer text-muted text-right">
                 <span class="badge bg-secondary">0.00%</span>

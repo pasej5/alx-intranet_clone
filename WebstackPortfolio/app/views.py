@@ -3,9 +3,11 @@ Import HTTP Response and render for
 internals
 """
 #from django.http import HttpResponse
+from asyncio import Server
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from app.models import Cohort, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
+from app.models import Cohort, CurrentTasks, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
 # A view No template.
 
 @login_required
@@ -13,10 +15,21 @@ def dashboard(request):
     """
     This function handles dashbord request
     """
-    myuser = User.objects.get(pk=49)
-    context = {
-        "marks" : Marks.objects.filter(user=myuser)
+    try:
+        myuser = get_object_or_404(User, user_name=request.user.username)
+        current = CurrentTasks.objects.filter(cohort_name=myuser.cohort)
+        context = {
+        "marks" : Marks.objects.filter(user=myuser),
+        "current_tasks" : current,
         }
+    except:
+        myuser = None
+        current = None
+        context = {
+            "marks": myuser,
+            "current_tasks" : current
+        }
+    
     return render(request, 'dashboard.html', context=context)
 
 @login_required
@@ -28,11 +41,19 @@ def profile(request):
 
 @login_required
 def servers(request):
+
     """
     This function returns the servers that 
     belong to a particular user
     """
-    return render(request, 'servers.html')
+    context = {}
+    try:
+        myuser = get_object_or_404(User, user_name=request.user.username)
+        sv = Servers.objects.filter(user=myuser)
+        context['server'] = sv
+    except:
+        context['server'] = None
+    return render(request, 'servers.html', context=context)
 
 @login_required
 def concepts(request):
@@ -48,7 +69,14 @@ def sandboxes(request):
     This returns the available
     sandboxes and their details to the user
     """
-    return render(request, "sandboxes.html")
+    context = {}
+    try:
+        myuser = get_object_or_404(User, user_name=request.user.username)
+        sb = Sandbox.objects.filter(user=myuser)
+        context['sandbox'] = sb
+    except:
+        context['sandbox'] = None
+    return render(request, "sandboxes.html", context=context)
 
 @login_required
 def projects(request):

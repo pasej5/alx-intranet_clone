@@ -41,15 +41,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="danger">
-                <td>John</td>
+              {% if current_tasks %}
+              {% for task in current_tasks %}
+              <tr class="">
+                <td><a href="{% url 'tasks'  task.project.project_id %}">{{task.project.project_name}}</a></td>
               </tr>
-              <tr>
-                <td>Mary</td>
+              {% endfor %}
+              {% else %}
+              <tr class="">
+                <td><h4>Nothing to show! Enjoy the silence</h4></td>
               </tr>
-              <tr>
-                <td>July</td>
-              </tr>
+              {% endif %}
             </tbody>
           </table>
         </section>
@@ -63,6 +65,7 @@
                 <th>SE Foundations</th><th>Score</th>
               </tr>
             </thead>
+            {% if marks %}
             {% for mark in marks %}
             <tbody>
               {% if mark.mark < 70 %}
@@ -79,6 +82,7 @@
               </tr>
               {% endif %}
             {% endfor %}
+            {% endif %}
             </tbody>
           </table>
         </section>

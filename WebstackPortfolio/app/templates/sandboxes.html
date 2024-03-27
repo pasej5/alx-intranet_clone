@@ -28,15 +28,17 @@
 {% block content %}
 
 <div class="d-grid gap-3">
+    {% if sandbox %}
+    {% for s in sandbox %}
     <div class="p-2 border">
         <div class="card  text-center">
             <div class="card-header">
-                Sand box Title
+                {{s.sandbox_name}}
             </div>
             <div class="card-body">
                 <h5 class="card-title">Sand box details</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <button href="#" class="btn btn-default">Webterm</button>
+                <p class="card-text">{{s.sandbox_detail}}</p>
+                <a href="{{s.sandbox_url}}" class="btn btn-default">Webterm</a>
                 <button href="#" class="btn btn-success">Refresh</button>
                 <button href="#" class="btn btn-danger">Delete</button>
               </div>
@@ -45,7 +47,9 @@
             </div>
         </div>
     </div>
-    <div class="p-2 bg-light border">Sandbox Total: 1</div>
+    {% endfor %}
+    {% endif %}
+    <div class="p-2 bg-light border">Sandbox Total: {{sandbox|length}}</div>
 </div>
 
 {% endblock %}

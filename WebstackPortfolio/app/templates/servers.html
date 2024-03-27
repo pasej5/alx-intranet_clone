@@ -28,14 +28,16 @@
 {% block content %}
 
 <div class="d-grid gap-3">
+    {% if server %}
+    {% for s in server %}
     <div class="p-2 border">
         <div class="card  text-center">
             <div class="card-header">
                 Linux Server
             </div>
             <div class="card-body">
-                <h5 class="card-title">Server IP : </h5>
-                <p class="card-text">Server Username : </p>
+                <h5 class="card-title">Server IP : {{s.server_ip}}</h5>
+                <p class="card-text">Server Username : {{s.server_user_name}}</p>
                 <button href="#" class="btn btn-default">Request Server</button>
                 <button href="#" class="btn btn-success">Refresh</button>
                 <button href="#" class="btn btn-danger">Delete Server</button>
@@ -45,7 +47,9 @@
             </div>
         </div>
     </div>
-    <div class="p-2 bg-light border">Sandbox Total: 1</div>
+    {% endfor %}
+    {% endif %}
+    <div class="p-2 bg-light border">Server Total: {{server.count}}</div>
 </div>
 
 {% endblock %}
