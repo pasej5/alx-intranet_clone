@@ -14,15 +14,13 @@
     <div class="text-center">
         <table class="table table-bordered">
             <tbody>
+                {% if concepts %}
+                {% for concept in concepts %}
                 <tr>
-                    <td>John</td>
+                    <td><a href="{% url 'concept' concept.concept_title %}">{{concept.concept_title}}</a></td>
                 </tr>
-                <tr>
-                    <td>Mary</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                </tr>
+                {% endfor %}
+                {% endif %}
             </tbody>
         </table>
     </div>

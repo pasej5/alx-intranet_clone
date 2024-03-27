@@ -24,19 +24,15 @@
     }
 </style>
 <script>
-    var flag = 1;
     function uncheck(button) {
-        //console.log(button.innerHTML);
-        if (flag)
+        if ($(button).children('i').attr("class") === 'fa fa-check-square-o')
         {
-            button.innerHTML = "<i class='fa fa-check-square-o' style='color : green'></i>Done!";
-            flag = 0;
-        } else
-        {
-            button.innerHTML = "<i class='fa fa-square-o'></i>Done!";
-            flag = 1;
+            $(button).children('i').attr("class", 'fa fa-square-o')
         }
-        
+        else
+        {
+            $(button).children('i').attr("class", 'fa fa-check-square-o')
+        }
     }
 </script>
 

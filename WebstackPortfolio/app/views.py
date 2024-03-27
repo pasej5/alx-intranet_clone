@@ -3,7 +3,6 @@ Import HTTP Response and render for
 internals
 """
 #from django.http import HttpResponse
-from asyncio import Server
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -61,7 +60,16 @@ def concepts(request):
     This function returns concepts that
     a user has to cover
     """
-    return render(request, "concepts.html")
+    context = {}
+    try:
+        myuser = get_object_or_404(User, user_name=request.user.username)
+        user_cohort = myuser.cohort
+        concepts = Concepts.objects.filter(cohort=user_cohort)
+        context['concepts'] = concepts
+    except:
+        context['concepts'] = None
+
+    return render(request, "concepts.html", context=context)
 
 @login_required
 def sandboxes(request):
@@ -109,3 +117,19 @@ def tasks(request, project_ID):
         'n': number
     }
     return render(request, 'tasks.html', context=context)
+
+@login_required
+def concept_detail(request, concept_title):
+    context = {}
+    myuser = get_object_or_404(User, user_name=request.user.username)
+    user_cohort = myuser.cohort
+    concepts = Concepts.objects.get(cohort=user_cohort, concept_title=concept_title)
+    context['concepts'] = concepts
+    try:
+        myuser = get_object_or_404(User, user_name=request.user.username)
+        user_cohort = myuser.cohort
+        concepts = Concepts.objects.get(cohort=user_cohort, concept_title=concept_title)
+        context['concepts'] = concepts
+    except:
+        context['concepts'] = None
+    return render(request, 'concept_detail.html', context=context)

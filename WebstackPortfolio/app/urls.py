@@ -11,4 +11,5 @@ urlpatterns = [
     path('servers/', views.servers, name='servers'),
     path('tasks/<int:project_ID>', views.tasks, name='tasks'),
     path('homepage/', views.homepage, name='homepage'),
+    path('concept/<str:concept_title>', views.concept_detail, name='concept'),
 ]
