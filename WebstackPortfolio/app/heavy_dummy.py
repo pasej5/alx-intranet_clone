@@ -1,112 +1,75 @@
 from django.utils import timezone
-from app.models import Cohort, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
-import random
-from random import choice
-"""
-Create cohorts (9 cohorts)
-"""
-for i in range(1, 10):
-    # Create cohorts
-    cohort = Cohort.objects.create(cohort_name=f'C{i}')
+from app.models import Cohort, User, Project, Concepts, Tasks, Marks, Events, Servers, Sandbox, CurrentTasks
+
+# Create cohorts
+cohorts = ['A1', 'B2', 'C3']
+for name in cohorts:
+    cohort = Cohort(cohort_name=name)
     cohort.save()
-"""
-Create projects (99 projects)
-"""
-for i in range(1, 100):
-    cohortid = random.randint(1, 9)
-    # Get cohorts
-    cohort = Cohort.objects.get(cohort_name=f'C{cohortid}')
-    project = Project.objects.create(
-        project_id=i,
-        project_name=f'Project {i}',
-        cohort=cohort
-    )
-    # Create tasks and each task has a concept
-    for i in range(1, 7):
-        # Create concepts
-        concept = Concepts.objects.create(
-        cohort=cohort,
-        concept_title=f'Concept {i}',
-        concept_content=f'This is concept {i}'
-        )
-        # Create the task
-        rand = random.randint(1, 10000)
-        task = Tasks.objects.create(
-            project=project,
-            task_id=rand,
-            task_name=f'Task {rand}',
-            task_content=f'This is task {rand}',
-            task_requirements=f'These are the requirements for task {rand}'
-        )
-for i in range(1, 50):
-    #Assign a random cohort to a user
-    cohortid = random.randint(1, 9)
-    # Get cohorts
-    cohort = Cohort.objects.get(cohort_name=f'C{cohortid}')
-    #Assign a random mark to a student
-    #mark = random.randint(60, 200)
-    # Create users
-    activity = ["Active", "Domant"]
-    idx = random.randint(0, 1)
-    user = User.objects.create(
-        first_name=f'User{i}',
-        last_name=f'Doe{i}',
-        user_name=f'userdoe{i}',
-        user_gender='M',
-        user_status=activity[idx],
-        cohort=cohort,
+# Create users
+first_names = ['John', 'Jane', 'Jim']
+last_names = ['Doe', 'Smith', 'Johnson']
+user_names = ['johndoe', 'janesmith', 'jimjohnson']
+genders = ['M', 'F', 'M']
+statuses = ['Active', 'Inactive', 'Active']
+cohorts = Cohort.objects.all()
+for i in range(3):
+    user = User(
+        first_name=first_names[i],
+        last_name=last_names[i],
+        user_name=user_names[i],
+        user_gender=genders[i],
+        user_status=statuses[i],
+        cohort=cohorts[i],
         date_registered=timezone.now(),
-        user_discord=f'userdoe{i}#1234',
-        github_username=f'userdoe{i}'
+        user_discord=f'{user_names[i]}#1234',
+        github_username=user_names[i]
     )
     user.save()
-    # Create servers
-    ser = random.randint(1, 9)
-    server = Servers.objects.create(
-        user=user,
-        server_user_name=f'userdoe{i}',
-        server_ip=f'1{i+ser}2.168.1.{i}'
-    )
-    server.save()
-    # Create sandboxes
-    sandbox = Sandbox.objects.create(
-        user=user,
-        sandbox_name=f'Sandbox {i}',
-        sandbox_detail=f'This is sandbox {i}',
-        sandbox_url=f'https://sandbox{i}.com'
-    )
-    sandbox.save()
-# Create events
-for i in range(1, 50):
-    event = Events.objects.create(
-        event_id=i,
-        event_name=f'Event {i}',
-        event_time=timezone.now().time(),
-        event_date=timezone.now().date(),
-        event_url=f'https://event{i}.com'
-    )
+# Create projects
+project_names = ['Project 1', 'Project 2', 'Project 3']
+for i in range(3):
+    project = Project(project_id=i+1, project_name=project_names[i], cohort=cohorts[i])
+    project.save()
+# Create concepts
+concept_titles = ['Concept 1', 'Concept 2', 'Concept 3']
+concept_contents = ['This is concept 1', 'This is concept 2', 'This is concept 3']
+for i in range(3):
+    concept = Concepts(id=i+1, cohort=cohorts[i], concept_title=concept_titles[i], concept_content=concept_contents[i])
+    concept.save()
+# Create tasks
+task_names = ['Task 1', 'Task 2', 'Task 3']
+task_contents = ['This is task 1', 'This is task 2', 'This is task 3']
+task_requirements = ['Requirement 1', 'Requirement 2', 'Requirement 3']
+projects = Project.objects.all()
+concepts = Concepts.objects.all()
+for i in range(3):
+    task = Tasks(project=projects[i], task_id=i+1, task_name=task_names[i], task_content=task_contents[i], task_requirements=task_requirements[i], concept=concepts[i])
+    task.save()
+# Create marks
+marks = [85, 90, 95]
+users = User.objects.all()
+tasks = Tasks.objects.all()
+for i in range(3):
+    mark = Marks(user=users[i], task=tasks[i], project=projects[i], mark=marks[i], solution_url=f'https://github.com/{user_names[i]}/project{i+1}', month_id=1)
+    mark.save()
+# Create even
+event_names = ['Event 1', 'Event 2', 'Event 3']
+for i in range(3):
+    event = Events(event_id=i+1, event_name=event_names[i], event_time=timezone.now(), event_date=timezone.now().date(), event_url=f'https://event{i+1}.com')
     event.save()
-# Create random marks for students
-for j in range(1, 50):
-    for i in range(0, 11):
-        mark = random.randint(60, 200)
-        # Get random task
-        pks = Tasks.objects.values_list('pk', flat=True)
-        random_pk = choice(pks)
-        task = Tasks.objects.get(pk=random_pk)
-        #Catch a bug
-        try:
-            myuser=User.objects.get(first_name=f'User{j}')
-            # create mark
-            mark = Marks.objects.create(
-                user=myuser,
-                task=task,
-                project=task.project,
-                mark=mark,
-                solution_url=f'https://github.com/userdoe{j}/project{i}/{task.task_name}',
-                month_id=i
-            )
-            mark.save()
-        except:
-            print(f'User{j} is not found')
-            j += 1
+# Create servers
+server_ips = ['192.168.1.1', '192.168.1.2', '192.168.1.3']
+for i in range(3):
+    server = Servers(user=users[i], server_user_name=user_names[i], server_ip=server_ips[i])
+    server.save()
+# Create sandboxes
+sandbox_names = ['Sandbox 1', 'Sandbox 2', 'Sandbox 3']
+sandbox_details = ['Detail 1', 'Detail 2', 'Detail 3']
+for i in range(3):
+    sandbox = Sandbox(user=users[i], sandbox_name=sandbox_names[i], sandbox_detail=sandbox_details[i], sandbox_url=f'https://sandbox{i+1}.com')
+    sandbox.save()
+# Create current tasks
+for i in range(3):
+    current_task = CurrentTasks(day=1, month=1, cohort_name=cohorts[i], project=projects[i])
+    current_task.save()

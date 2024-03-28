@@ -46,6 +46,19 @@ class Project(models.Model):
     def __str__(self) -> str:
         return f"{self.project_name}"
 
+class Concepts(models.Model):
+    """
+    This entity handles concepts that are
+    to be covered by a all users of a given cohort
+    """
+    id = models.IntegerField(primary_key=True, unique=True)
+    cohort = models.ForeignKey(Cohort, default=None, on_delete=models.PROTECT)
+    concept_title = models.CharField(max_length=100)
+    concept_content = models.TextField(max_length=5000)
+
+    def __str__(self) -> str:
+        return f"{self.concept_title}"
+
 class Tasks(models.Model):
     """
     This entity defines records containing
@@ -58,6 +71,7 @@ class Tasks(models.Model):
     task_name = models.CharField(max_length=100)
     task_content = models.TextField(max_length=5000)
     task_requirements = models.TextField(max_length=1000)
+    concept = models.ForeignKey(Concepts, default=None, on_delete=models.PROTECT)
 
     def __str__(self) -> str:
         return f"{self.task_name}"
@@ -108,18 +122,6 @@ class Servers(models.Model):
     def __str__(self) -> str:
         return f"{self.server_user_name} {self.server_ip}"
 
-class Concepts(models.Model):
-    """
-    This entity handles concepts that are
-    to be covered by a all users of a given cohort
-    """
-    cohort = models.ForeignKey(Cohort, default=None, on_delete=models.PROTECT)
-    concept_title = models.CharField(max_length=100)
-    concept_content = models.TextField(max_length=5000)
-
-    def __str__(self) -> str:
-        return f"{self.concept_title}"
-
 class Sandbox(models.Model):
     """
     This stores sandboxes given to the user by
@@ -132,7 +134,6 @@ class Sandbox(models.Model):
 
     def __str__(self) -> str:
         return f"{self.sandbox_name}"
-
  
 class CurrentTasks(models.Model):
     """

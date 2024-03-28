@@ -3,10 +3,12 @@ Import HTTP Response and render for
 internals
 """
 #from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from app.models import Cohort, CurrentTasks, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
+from .forms import RegistrationForm
 # A view No template.
 
 @login_required
@@ -99,7 +101,6 @@ def projects(request):
     }
     return render(request, "projects.html", context=context)
 
-@login_required
 def homepage(request):
     return render(request, 'homepage.html')
 
@@ -114,22 +115,30 @@ def tasks(request, project_ID):
     number = my_tasks.count() # Number of tasks
     context = {
         'tasks': my_tasks,
-        'n': number
     }
     return render(request, 'tasks.html', context=context)
 
 @login_required
 def concept_detail(request, concept_title):
     context = {}
-    myuser = get_object_or_404(User, user_name=request.user.username)
-    user_cohort = myuser.cohort
-    concepts = Concepts.objects.get(cohort=user_cohort, concept_title=concept_title)
-    context['concepts'] = concepts
     try:
-        myuser = get_object_or_404(User, user_name=request.user.username)
-        user_cohort = myuser.cohort
-        concepts = Concepts.objects.get(cohort=user_cohort, concept_title=concept_title)
+        concepts = Concepts.objects.get(concept_title=concept_title)
         context['concepts'] = concepts
     except:
         context['concepts'] = None
     return render(request, 'concept_detail.html', context=context)
+
+def signup(request):
+    form = RegistrationForm(request.POST)
+    from django.contrib.auth.models import User as usr
+    if form.is_valid():
+        if not User.objects.filter(user_name=request.POST['user_name']).first():
+            form.save()
+            my_user = usr.objects.create(username=request.POST['user_name'])
+            my_user.set_password('12345')
+            my_user.save()
+            return redirect(reverse('login'))
+    context = {
+        "form" : form,
+    }
+    return render(request, "signup.html", context=context)

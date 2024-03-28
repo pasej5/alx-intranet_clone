@@ -39,7 +39,6 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="d-grid gap-3">
     <!--Start task-->
     {% for task in tasks %}
@@ -50,6 +49,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ task.task_requirements }}</h5>
+                <h6>This task is about this concept <a href="{% url 'concept' task.concept.concept_title %}">{{task.concept.concept_title}}</a></h6>
                 <p class="card-text">{{ task.task_content }}</p>
                 <button href="#" class="btn btn-default but" onclick="uncheck(this)"><i class='fa fa-square-o'></i>Done!</button>
                 <a href="{% url 'sandboxes' %}" class="btn btn-default but">Get SandBox</a>
@@ -61,7 +61,7 @@
     </div>
     {% endfor %}
     <!-- End task -->
-    <div class="p-2 bg-light border">Task Sum: {{n}}</div>
+    <div class="p-2 bg-light border">Task Sum: {{tasks.count}}</div>
 </div>
 
 

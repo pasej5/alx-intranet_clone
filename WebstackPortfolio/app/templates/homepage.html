@@ -53,10 +53,17 @@
             <li class="nav-item">
               <a class="nav-link" href="#contact">Contact</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+    <div class="text-center btn-danger">A student? SignIn</div>
     <div
       class="carousel slide"
       data-bs-ride="carousel"
@@ -85,17 +92,15 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <video autoplay loop muted class="d-block w-100">
-            <source src="{% static 'videos/my_vid.mp4' %}" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="carousel-caption d-none d-md-block">
-            <h5>WELCOME</h5>
+          <img
+            alt="..."
+            class="d-block w-100"
+            src="{% static 'images/team.jpg' %}"
+          />
+          <div class="carousel-caption">
             <p>
               "Intranet Clone" is an innovative online platform designed to
-              revolutionize the student experience. It offers a comprehensive
-              suite of tools and resources, providing students with a
-              centralized hub for all their academic needs.
+              revolutionize the student experience..
             </p>
             <p><a href="#" class="btn btn-warning mt-3">Join Us</a></p>
             <p><a href="{% url 'login' %}" class="btn btn-warning mt-3">Intranet</a></p>
@@ -168,13 +173,7 @@
                 Welcome to our premier online student hub, where excellence
                 meets innovation. Our platform is designed to provide
                 top-quality educational services that cater to your unique
-                learning requirements. With a diverse range of courses and
-                resources, we ensure that every student has the tools they need
-                to succeed. One of the key features of our platform is our
-                advanced code-checking system, which helps students maintain
-                academic integrity by detecting and preventing plagiarism. With
-                this innovative tool, students can submit their work with
-                confidence, knowing that their originality is protected. At our
+                learning requirements.At our
                 student hub, we are committed to fostering a supportive learning
                 environment where students can thrive and reach their full
                 potential. Join us on this journey of academic excellence and
@@ -442,26 +441,6 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-6 col-lg-3">
-            <div class="card text-center">
-              <div class="card-body">
-                <h3 class="card-title py-2"></h3>
-                {% comment %}
-                <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Sequi ipsam nostrum illo tempora esse quibusdam.
-                </p>
-                {% endcomment %} {% comment %}
-                <p class="socials">
-                  <i class="bi bi-twitter text-dark mx-1"></i>
-                  <i class="bi bi-facebook text-dark mx-1"></i>
-                  <i class="bi bi-linkedin text-dark mx-1"></i>
-                  <i class="bi bi-instagram text-dark mx-1"></i>
-                </p>
-                {% endcomment %}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -501,9 +480,5 @@
     <!-- All Js -->
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    {% comment %}
-    <script src="js/bootstrap.bundle.min.js"></script>
-    {% endcomment %}
   </body>
 </html>

@@ -1,0 +1,56 @@
+{% include 'sidepane.html' %}
+{% block header_content %}
+<style>
+    form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+}
+
+th {
+    text-align: left;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+.errorlist {
+    color: red;
+    font-size: 0.8em;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+</style>
+{% endblock %}
+{% block content %}
+<form method="post">
+{% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
