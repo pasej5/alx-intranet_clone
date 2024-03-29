@@ -83,3 +83,22 @@ class ModelTestCase(TestCase):
     def test_concepts_model(self):
         self.assertEqual(str(self.concepts), "TestConcept")
         self.assertEqual(self.concepts.id, 1)
+        
+    def test_tasks_model(self):
+        self.assertEqual(str(self.tasks), "TestTask")
+        self.assertEqual(self.tasks.task_id, 1)
+        
+    def test_marks_model(self):
+        self.assertEqual(str(self.marks), "1 80")
+        self.assertEqual(self.marks.mark, 80)
+    
+    def test_events_model(self):
+        self.assertEqual(str(self.events), "TestEvent 12:00:00")
+        self.assertEqual(self.events.event_id, 1)
+        
+    def test_servers_model(self):
+        self.assertEqual(str(self.servers), "TestUser 127.0.0.1")
+        
+    def test_current_tasks_model(self):
+        self.assertEqual(self.current_tasks.day, 1)
+        self.assertEqual(self.current_tasks.month, 1)
