@@ -1,13 +1,10 @@
 from django.test import TestCase
 
-from django.test import TestCase
-from .models import Cohort, User, Project, Concepts, Tasks, Marks, Events, Servers, Sandbox, CurrentTasks
 from django.test import TestCase, Client
+from .models import Cohort, User, Project, Concepts, Tasks, Marks, Events, Servers, Sandbox, CurrentTasks
 from django.urls import reverse
 from django.contrib.auth.models import User
 from app.models import Cohort, CurrentTasks, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
-
-
 
 class ModelTestCase(TestCase):
     def setUp(self):
@@ -168,3 +165,48 @@ class ViewsTestCase(TestCase):
         response = self.client.get(reverse('signup'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'signup.html')
+
+class TemplateTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_dashboard_template(self):
+        response = self.client.get(reverse('dashboard'))
+        self.assertTemplateUsed(response, 'dashboard.html')
+
+    def test_profile_template(self):
+        response = self.client.get(reverse('profile'))
+        self.assertTemplateUsed(response, 'profile.html')
+
+    def test_servers_template(self):
+        response = self.client.get(reverse('servers'))
+        self.assertTemplateUsed(response, 'servers.html')
+
+    def test_concepts_template(self):
+        response = self.client.get(reverse('concepts'))
+        self.assertTemplateUsed(response, 'concepts.html')
+
+    def test_sandboxes_template(self):
+        response = self.client.get(reverse('sandboxes'))
+        self.assertTemplateUsed(response, 'sandboxes.html')
+
+    def test_projects_template(self):
+        response = self.client.get(reverse('projects'))
+        self.assertTemplateUsed(response, 'projects.html')
+
+    def test_homepage_template(self):
+        response = self.client.get(reverse('homepage'))
+        self.assertTemplateUsed(response, 'homepage.html')
+
+    def test_tasks_template(self):
+        response = self.client.get(reverse('tasks', kwargs={'project_ID': 1}))
+        self.assertTemplateUsed(response, 'tasks.html')
+
+    def test_concept_detail_template(self):
+        response = self.client.get(reverse('concept_detail', kwargs={'concept_title': 'Test Concept'}))
+        self.assertTemplateUsed(response, 'concept_detail.html')
+
+    def test_signup_template(self):
+        response = self.client.get(reverse('signup'))
+        self.assertTemplateUsed(response, 'signup.html')
+
