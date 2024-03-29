@@ -68,3 +68,5 @@ class ModelTestCase(TestCase):
             cohort_name=self.cohort,
             project=self.project
         )
+    def test_cohort_model(self):
+        self.assertEqual(str(self.cohort), "TestCohort")
