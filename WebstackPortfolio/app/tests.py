@@ -70,3 +70,16 @@ class ModelTestCase(TestCase):
         )
     def test_cohort_model(self):
         self.assertEqual(str(self.cohort), "TestCohort")
+        
+    def test_user_model(self):
+        self.assertEqual(str(self.user), "John Doe")
+        self.assertEqual(self.user.first_name, "John")
+        self.assertEqual(self.user.last_name, "Doe")
+    
+    def test_project_model(self):
+        self.assertEqual(str(self.project), "TestProject")
+        self.assertEqual(self.project.project_id, 1)
+    
+    def test_concepts_model(self):
+        self.assertEqual(str(self.concepts), "TestConcept")
+        self.assertEqual(self.concepts.id, 1)
