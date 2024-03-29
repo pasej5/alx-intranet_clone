@@ -22,6 +22,7 @@ def dashboard(request):
         context = {
         "marks" : Marks.objects.filter(user=myuser),
         "current_tasks" : current,
+        "title": "Dashbord",
         }
     except:
         myuser = None
@@ -47,7 +48,9 @@ def servers(request):
     This function returns the servers that 
     belong to a particular user
     """
-    context = {}
+    context = {
+        "title":"servers",
+    }
     try:
         myuser = get_object_or_404(User, user_name=request.user.username)
         sv = Servers.objects.filter(user=myuser)
@@ -62,7 +65,9 @@ def concepts(request):
     This function returns concepts that
     a user has to cover
     """
-    context = {}
+    context = {
+        "title":"concepts",
+    }
     try:
         myuser = get_object_or_404(User, user_name=request.user.username)
         user_cohort = myuser.cohort
@@ -79,7 +84,9 @@ def sandboxes(request):
     This returns the available
     sandboxes and their details to the user
     """
-    context = {}
+    context = {
+        "title":"sandboxes",
+    }
     try:
         myuser = get_object_or_404(User, user_name=request.user.username)
         sb = Sandbox.objects.filter(user=myuser)
@@ -98,11 +105,12 @@ def projects(request):
     project = Tasks.objects.all()
     context = {
         'projects' : project,
+        'title' : "Projects",
     }
     return render(request, "projects.html", context=context)
 
 def homepage(request):
-    return render(request, 'homepage.html')
+    return render(request, 'homepage.html', {"title":"homepge"})
 
 @login_required
 def tasks(request, project_ID):
@@ -115,6 +123,7 @@ def tasks(request, project_ID):
     number = my_tasks.count() # Number of tasks
     context = {
         'tasks': my_tasks,
+        'title': 'Tasks',
     }
     return render(request, 'tasks.html', context=context)
 
@@ -124,6 +133,7 @@ def concept_detail(request, concept_title):
     try:
         concepts = Concepts.objects.get(concept_title=concept_title)
         context['concepts'] = concepts
+        context['title'] = concepts.concept_title
     except:
         context['concepts'] = None
     return render(request, 'concept_detail.html', context=context)
@@ -140,5 +150,6 @@ def signup(request):
             return redirect(reverse('login'))
     context = {
         "form" : form,
+        'title': 'SignUp'
     }
     return render(request, "signup.html", context=context)
