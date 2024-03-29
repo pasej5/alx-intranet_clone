@@ -2,6 +2,12 @@ from django.test import TestCase
 
 from django.test import TestCase
 from .models import Cohort, User, Project, Concepts, Tasks, Marks, Events, Servers, Sandbox, CurrentTasks
+from django.test import TestCase, Client
+from django.urls import reverse
+from django.contrib.auth.models import User
+from app.models import Cohort, CurrentTasks, User, Project, Tasks, Marks, Events, Servers, Concepts, Sandbox
+
+
 
 class ModelTestCase(TestCase):
     def setUp(self):
@@ -102,3 +108,63 @@ class ModelTestCase(TestCase):
     def test_current_tasks_model(self):
         self.assertEqual(self.current_tasks.day, 1)
         self.assertEqual(self.current_tasks.month, 1)
+        
+class ViewsTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.cohort = Cohort.objects.create(cohort_name='Test')
+        self.client.login(username='testuser', password='12345')
+
+    def test_dashboard_view(self):
+        response = self.client.get(reverse('dashboard'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'dashboard.html')
+
+    def test_profile_view(self):
+        response = self.client.get(reverse('profile'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'profile.html')
+
+    def test_servers_view(self):
+        response = self.client.get(reverse('servers'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'servers.html')
+
+    def test_concepts_view(self):
+        response = self.client.get(reverse('concepts'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'concepts.html')
+
+    def test_sandboxes_view(self):
+        response = self.client.get(reverse('sandboxes'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'sandboxes.html')
+
+    def test_projects_view(self):
+        response = self.client.get(reverse('projects'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'projects.html')
+
+    def test_homepage_view(self):
+        response = self.client.get(reverse('homepage'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'homepage.html')
+
+    def test_tasks_view(self):
+        project = Project.objects.create(project_id=1, project_name='Test Project', cohort=self.cohort)
+        task = Tasks.objects.create(project=project, task_id=1, task_name='Test Task', task_content='Test Content', task_requirements='Test Requirements', concept=None)
+        response = self.client.get(reverse('tasks', kwargs={'project_ID': 1}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'tasks.html')
+
+    def test_concept_detail_view(self):
+        concept = Concepts.objects.create(id=1, cohort=self.cohort, concept_title='Test Concept', concept_content='Test Content')
+        response = self.client.get(reverse('concept_detail', kwargs={'concept_title': 'Test Concept'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'concept_detail.html')
+
+    def test_signup_view(self):
+        response = self.client.get(reverse('signup'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'signup.html')
