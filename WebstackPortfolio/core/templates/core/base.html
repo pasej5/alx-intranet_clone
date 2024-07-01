@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>{{ title }}</title>
+    <title>{{title}}</title>
     <link
       rel="icon"
       href="{% static 'images/homepage_ico.ico' %}"
@@ -29,7 +29,6 @@
       class="navbar navbar-expand-xl navbar-light bg-info fixed-top"
       style="padding: 20px 0 z-index: 1000;"
     >
-  
       <div class="container">
         <a class="navbar-brand" href="#" style="font-size: 30px"
           ><span class="text-warning">NLX-</span>Experience</a
@@ -48,23 +47,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard' %}" style="font-size: 18px">Dashboard</a>
+              <a class="nav-link" href="#home" style="font-size: 18px">Home</a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'projects' %}" style="font-size: 18px"
-                >Projects</a
+              <a class="nav-link" href="#portfolio" style="font-size: 18px"
+                >Reviews</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'concepts' %}" style="font-size: 18px">Concepts</a>
+              <a class="nav-link" href="#team" style="font-size: 18px">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact" style="font-size: 18px"
+                >Contact</a
+              >
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
                 href="{% url 'login' %}"
                 style="font-size: 18px"
-                >Login</a
+                >Sign In</a
               >
             </li>
             <li class="nav-item">
