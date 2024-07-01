@@ -1,7 +1,6 @@
 Project Name: alx-intranet_clone
 
 Authors: Namwamba Marvin
-               Dike Esther Chika
                Jealous Matsikachando
                Mayowa Mayowa 
  
@@ -39,6 +38,4 @@ If you would like to contribute to the project, please fork the repository, make
 License:
 This project is licensed under the MIT License. Feel free to use, modify, and distribute the code as needed.
 
-Contact:
-If you have any questions or feedback, please contact [dikechika87@gmail.com]. Thank you for using our school intranet dashboard clone!
 
