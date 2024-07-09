@@ -35,11 +35,13 @@
   </style>
   <body>
     <div class="card">
+      {% comment %}
       <img
         class="card-img-top"
         src="{% static 'images/nlx.jpg' %}"
         alt="Card image cap"
       />
+      {% endcomment %}
       <div class="card-body">
         {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
@@ -47,6 +49,7 @@
         <form class="text-center" method="post" action="{% url 'login' %}">
           {% csrf_token %}
           <div class="form-group">
+            <p>default Login: Username=alxclone Password=alxclone500</p>
             <label for="exampleInputEmail1">User Name</label>
             <input
               class="form-control"

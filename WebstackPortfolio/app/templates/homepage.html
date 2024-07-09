@@ -19,87 +19,25 @@
 
     <!-- All CSS -->
     <style>
+      .navbar-custom {
+        border-radius: 30px;
+      }
       .welcome_message {
         font-size: 24px;
       }
     </style>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-xl navbar-light bg-info fixed-top"
-      style="padding: 20px 0 z-index: 1000;"
-    >
-  
-      <div class="container">
-        <a class="navbar-brand" href="#" style="font-size: 30px"
-          ><span class="text-warning">NLX-</span>Experience</a
-        >
-        <button
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-bs-target="#navbarSupportedContent"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard' %}" style="font-size: 18px">Dashboard</a>
-            </li>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'projects' %}" style="font-size: 18px"
-                >Projects</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{% url 'login' %}"
-                style="font-size: 18px"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{% url 'signup' %}"
-                style="font-size: 18px"
-                >Sign Up</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <a href="{% url 'dashboard' %}" class="navbar-brand">
+        <span class="text-warning">NLX-</span>Experience
+      </a>
     </nav>
-    <div class="text-center btn-danger">A student? SignIn</div>
 
-    <section class="about section-padding" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="about-text">
-              <h2>
-                Empowering Student Success<br />
-                <hr />
-              </h2>
-              <p class="welcome_message">
-                Welcome to our premier online student hub, where excellence
-                meets innovation. Our platform is designed to provide
-                top-quality educational services that cater to your unique
-                learning requirements.At our student hub, we are committed to
-                fostering a supportive learning environment where students can
-                thrive and reach their full potential. Join us on this journey
-                of academic excellence and unlock a world of opportunities
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
