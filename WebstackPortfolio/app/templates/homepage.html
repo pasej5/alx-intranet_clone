@@ -69,25 +69,25 @@
                 >Login</a
               >
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{% url 'signup' %}"
-                style="font-size: 18px"
-                >Sign Up</a
-              >
-            </li>
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg">Enrol Now</a>
+
           </ul>
         </div>
       </div>
     </nav>
 
-    <section class="bg-dark text-light p-5 text-center">
+    <section class="bg-dark text-light p-5 text-center text-sm-start">
       <div class="container">
-        <div>
-          <h1>Become a Web developer</h1>
+        <div class="d-sm-flex">
+          <div>
+            <h1 class="mr-4">Be a<span class="text-warning"> Web developer</span></h1>
+            <p class="lead my-4">
+              Sorry for the inconvinience website under revamp😊
+            </p>
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg">Start the enrolment</a>
+          </div>
+          <img class="img-fluid w-50 d-none d-sm-block " src="{% static 'images/ppic.png' %}" alt="IMAGE HERE">
         </div>
-        <img src="" alt="IMAGE HERE">
       </div>
     </section>
 
