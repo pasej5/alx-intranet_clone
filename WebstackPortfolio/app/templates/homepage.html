@@ -17,6 +17,7 @@
     />
     <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
 
     <!-- All CSS -->
@@ -296,10 +297,10 @@
         <div class="col-md-6">
           <div class="card bg-light">
             <div class="card-body text-center">
-              <img src="https://randomuser.me/api/portraits/men/36.jpg" class="rounded-circle mb-3" alt="Pic">
+              <img src="{% static 'images/pic.jpg' %}" class="rounded-circle mb-3 w-25" alt="Pic">
               <h3 class="card-title mb-3">Jealous Matsikachando</h3>
               <p class="card-text">Software Engineer</p>
-              <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
+              <a href="https://x.com/MatsikaJay"><i class="bi bi-twitter text-dark mx-1"></i></a>
               <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
               <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
               <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
@@ -326,10 +327,62 @@
 
     <!-- contact and map -->
 
+    <section class="p-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md">
+            <h2 class="text-center mb-4">Contact Info</h2>
+            <ul class="list-group list-group-flush lead">
+              <li class="list-group-item">
+                <span class="fw-bold">South Africa Contact : </span>20 West Road South, Morningside, Johhanesburg, SA
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Cell : </span> (+27) 659 637 633
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Email : </span> pasej5@gmail.com
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Ghana Location : </span>45 Kofi Annan St, Accra, Ghana
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold">Cell : </span> (+256) 774 880 026
+              </li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <div id="map"></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+      <div class="container">
+        <p class="lead"> Copyright &copy; 2024</p>
+        <a href="#" class="position-absolute bottom-0 end-0 p-5" >
+          <i class="bi bi-arrow-up-circle h1"></i>
+        </a>
+      </div>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiamF5bWF0MSIsImEiOiJjbHlsdWMzMnQwYmptMmlxcnNvZW5vb2JyIn0.6qcjq2fU94AiPMRNJcFVSQ';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+        center: [-26.09205, 28.05472],
+        zoom: 18,
+      });
+    </script>    
   </body>
 </html>
