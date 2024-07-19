@@ -1,6 +1,5 @@
 #!/bin/bash
-# Update the package list and install any necessary dependencies
-sudo yum -y update
-sudo yum -y install nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
+# Update the package list and install necessary dependencies
+sudo apt-get update
+sudo apt-get -y install nginx python3-pip
+pip3 install -r /var/www/html/WebstackPortfolio/requirements.txt
