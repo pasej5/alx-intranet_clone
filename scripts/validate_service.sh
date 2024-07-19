@@ -1,9 +1,19 @@
 #!/bin/bash
-# Validate the Nginx service is running
-if systemctl status nginx | grep -q 'active (running)'; then
-  echo "Nginx is running"
-  exit 0
+
+# Check if Gunicorn is running
+if pgrep gunicorn > /dev/null
+then
+    echo "Gunicorn is running"
 else
-  echo "Nginx is NOT running"
-  exit 1
+    echo "Gunicorn is not running"
+    exit 1
+fi
+
+# Check if Nginx is running
+if systemctl status nginx | grep running > /dev/null
+then
+    echo "Nginx is running"
+else
+    echo "Nginx is not running"
+    exit 1
 fi
