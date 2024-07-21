@@ -1,22 +1,37 @@
 version: 0.0
 os: linux
-files:
+files: 
   - source: /
-    destination: /var/www/html/webstack/alx-intranet_clone/WebstackPortfolio
+    destination: /home/ubuntu/blogprojectdrf
+permissions:
+  - object: /home/ubuntu/blogprojectdrf
+    owner: ubuntu
+    group: ubuntu
 hooks:
   BeforeInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/stop_server.sh
-      timeout: 300
-      runas: root
+      - location: scripts/clean_instance.sh
+        timeout: 300
+        runas: ubuntu
   AfterInstall:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: root
-  ValidateService:
-    - location: scripts/validate_service.sh
-      timeout: 300
-      runas: root
+      - location: scripts/instance_os_dependencies.sh
+        timeout: 300
+        runas: ubuntu
+      - location: scripts/python_dependencies.sh
+        timeout: 300
+        runas: ubuntu
+      - location: scripts/gunicorn.sh
+        timeout: 300
+        runas: ubuntu
+      - location: scripts/nginx.sh
+        timeout: 300
+        runas: ubuntu
+  ApplicationStop:
+      - location: scripts/stop_app.sh
+        timeout: 300
+        runas: ubuntu
+  ApplicationStart:
+      - location: scripts/start_app.sh
+        timeout: 300
+        runas: ubuntu
+  
+  
