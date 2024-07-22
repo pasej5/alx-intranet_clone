@@ -1,6 +1,6 @@
 #!/usr/bin/bash 
 
-sed -i 's/\[]/\["54.144.250.113"]/' /home/ubuntu/WebstackPortfolio/blog/settings.py
+sed -i 's/\[]/\["54.144.250.113"]/' /home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio/settings.py
 
 python manage.py migrate 
 python manage.py makemigrations     
