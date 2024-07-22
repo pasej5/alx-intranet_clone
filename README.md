@@ -1,14 +1,13 @@
 Project Name: alx-intranet_clone
 
 Authors: Namwamba Marvin
-               Jealous Matsikachando
-               Mayowa Mayowa 
- 
+Jealous Matsikachando
 
 Description:
 This project is a clone of our school intranet dashboard. It provides a centralized platform for students and teachers to access information such as projects, servers, planning, sandboxes and grades. The dashboard is designed to be user-friendly and customizable, providing a seamless experience for users.
 
 Installation:
+
 1. Clone the repository to our local machine using the following command:
    git clone <repository-url>
 
@@ -18,6 +17,7 @@ Installation:
 3. Set up a local or remote server to run the application. We will use tools like Node.js, Apache or Django to host the dashboard.
 
 Usage:
+
 1. Start the server by running the following command:
    npm start
 
@@ -26,6 +26,7 @@ Usage:
 3. Log in with your credentials to access the dashboard and explore its features.
 
 Features:
+
 - User authentication and role-based access control
 - Course management functionality for teachers
 - Assignment submission and grading system
@@ -37,5 +38,3 @@ If you would like to contribute to the project, please fork the repository, make
 
 License:
 This project is licensed under the MIT License. Feel free to use, modify, and distribute the code as needed.
-
-
