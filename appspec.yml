@@ -9,27 +9,27 @@ permissions:
     group: ubuntu
 hooks:
   BeforeInstall:
-    - location: scripts/clean_instance.sh
+    - location: WebstackPortfolio/scripts/clean_instance.sh
       timeout: 300
       runas: ubuntu
   AfterInstall:
-    - location: scripts/instance_os_dependencies.sh
+    - location: WebstackPortfolio/scripts/instance_os_dependencies.sh
       timeout: 300
       runas: ubuntu
-    - location: scripts/python_dependencies.sh
+    - location: WebstackPortfolio/scripts/python_dependencies.sh
       timeout: 300
       runas: ubuntu
-    - location: scripts/gunicorn.sh
+    - location: WebstackPortfolio/scripts/gunicorn.sh
       timeout: 300
       runas: ubuntu
-    - location: scripts/nginx.sh
+    - location: WebstackPortfolio/scripts/nginx.sh
       timeout: 300
       runas: ubuntu
   ApplicationStop:
-    - location: scripts/stop_app.sh
+    - location: WebstackPortfolio/scripts/stop_app.sh
       timeout: 300
       runas: ubuntu
   ApplicationStart:
-    - location: scripts/start_app.sh
+    - location: WebstackPortfolio/scripts/start_app.sh
       timeout: 300
       runas: ubuntu
