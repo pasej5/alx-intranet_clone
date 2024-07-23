@@ -10,3 +10,4 @@ sudo rm -rf /home/ubuntu/alx-intranet_clone/WebstackPortfolio/logs/*
 # Restart Gunicorn and Nginx if necessary
 sudo systemctl restart gunicorn
 sudo systemctl restart nginx
+logs
