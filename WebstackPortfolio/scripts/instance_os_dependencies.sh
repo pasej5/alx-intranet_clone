@@ -1,10 +1,17 @@
 #!/bin/bash
 
-# Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+# Create the virtual environment if it doesn't exist
+if [ ! -d "/home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env" ]; then
+    python3 -m venv /home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env
+fi
 
-# Activate virtual environment
-source $PROJECT_DIR/new_env/bin/activate
+# Activate the virtual environment
+source /home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env/bin/activate
+
+# Install system dependencies
+sudo apt-get update
+sudo apt-get install -y nginx
 
 # Install Python dependencies
-pip install -r $PROJECT_DIR/requirements.txt
+pip install --upgrade pip
+pip install -r /home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt
