@@ -1,12 +1,22 @@
+#!/bin/bash
 
-#!/usr/bin/bash
+# Define variables
+NGINX_CONFIG="/etc/nginx/sites-available/webstackportfolio"
+NGINX_SYMLINK="/etc/nginx/sites-enabled/webstackportfolio"
 
-sudo systemctl daemon-reload
-sudo rm -f /etc/nginx/sites-enabled/default
+# Copy the Nginx configuration file
+sudo cp $PROJECT_DIR/nginx/webstackportfolio $NGINX_CONFIG
 
-sudo cp /home/ubuntu/alx-intranet_clone/WebstackPortfoilio/nginx/nginx.conf /etc/nginx/sites-available/blog
-sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled/
-#sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled
-#sudo nginx -t
-sudo gpasswd -a www-data ubuntu
+# Remove old symlink if it exists
+if [ -L $NGINX_SYMLINK ]; then
+    sudo rm $NGINX_SYMLINK
+fi
+
+# Create a new symlink
+sudo ln -s $NGINX_CONFIG $NGINX_SYMLINK
+
+# Test Nginx configuration
+sudo nginx -t
+
+# Restart Nginx
 sudo systemctl restart nginx

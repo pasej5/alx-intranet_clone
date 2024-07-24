@@ -1,5 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-sudo apt install -y python3-pip
-sudo apt install -y nginx
-sudo apt install -y virtualenv
+# Define variables
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+
+# Activate virtual environment
+source $PROJECT_DIR/new_env/bin/activate
+
+# Install Python dependencies
+pip install -r $PROJECT_DIR/requirements.txt

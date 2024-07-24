@@ -1,6 +1,10 @@
-#!/usr/bin/bash
-sudo cp /home/ubuntu/alx-intranet_clone/WebstackPortfolio/gunicorn/gunicorn.socket  /etc/systemd/system/gunicorn.socket
-sudo cp /home/ubuntu/alx-intranet/WebstackPortFoilo/gunicorn/gunicorn.service  /etc/systemd/system/gunicorn.service
+#!/bin/bash
 
-sudo systemctl start gunicorn.service
-sudo systemctl enable gunicorn.service
+# Define variables
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+GUNICORN_SOCKET="/run/gunicorn.sock"
+GUNICORN_BIN="$PROJECT_DIR/new_env/bin/gunicorn"
+APP_MODULE="WebstackPortfolio.wsgi:application"
+
+# Start Gunicorn
+sudo $GUNICORN_BIN --bind unix:$GUNICORN_SOCKET --workers 3 --access-logfile - $APP_MODULE

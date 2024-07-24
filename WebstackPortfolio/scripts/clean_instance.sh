@@ -1,12 +1,13 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-# Remove old static files and logs
-sudo rm -rf /home/ubuntu/alx-intranet_clone/WebstackPortfolio/staticfiles/*
-sudo rm -rf /home/ubuntu/alx-intranet_clone/WebstackPortfolio/logs/*
+# Define variables
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+GUNICORN_SOCKET="/run/gunicorn.sock"
 
-# Ensure important files and directories are preserved
-# You might include additional directories or files as needed
+# Remove Gunicorn socket
+if [ -e $GUNICORN_SOCKET ]; then
+    sudo rm $GUNICORN_SOCKET
+fi
 
-# Restart Gunicorn and Nginx if necessary
-sudo systemctl restart gunicorn
-sudo systemctl restart nginx
+# Clean up old static files
+sudo rm -rf $PROJECT_DIR/staticfiles/*
