@@ -6,7 +6,7 @@ VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.wsgi:application"
-REQUIREMENTS_FILE="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt"
+REQUIREMENTS_FILE="$PROJECT_DIR/requirements.txt"
 
 # Create the /run directory if it doesn't exist and set permissions
 sudo mkdir -p /run
@@ -23,9 +23,11 @@ fi
 
 # Activate the virtual environment and install dependencies
 source $VENV_DIR/bin/activate
+
+# Upgrade pip
 pip install --upgrade pip
 
-# Uninstall and reinstall Gunicorn to ensure it's correctly installed
+# Uninstall and reinstall Gunicorn
 pip uninstall -y gunicorn
 pip install gunicorn
 
