@@ -24,10 +24,8 @@ fi
 # Activate the virtual environment and install dependencies
 source $VENV_DIR/bin/activate
 
-# Upgrade pip
+# Upgrade pip and reinstall Gunicorn
 pip install --upgrade pip
-
-# Uninstall and reinstall Gunicorn
 pip uninstall -y gunicorn
 pip install gunicorn
 
