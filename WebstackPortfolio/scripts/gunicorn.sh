@@ -25,13 +25,13 @@ fi
 source $VENV_DIR/bin/activate
 
 # Upgrade pip and reinstall Gunicorn
-pip install --upgrade pip
-pip uninstall -y gunicorn
-pip install gunicorn
+pip3 install --upgrade pip
+pip3 uninstall -y gunicorn
+pip3 install gunicorn
 
 # Install dependencies from requirements.txt
 if [ -f "$REQUIREMENTS_FILE" ]; then
-    pip install -r $REQUIREMENTS_FILE
+    pip3 install -r $REQUIREMENTS_FILE
 else
     echo "Requirements file not found at $REQUIREMENTS_FILE"
     exit 1
