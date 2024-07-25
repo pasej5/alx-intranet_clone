@@ -13,6 +13,9 @@ sudo chown ubuntu:ubuntu /run
 # Navigate to project directory
 cd $PROJECT_DIR
 
+# Set PYTHONPATH
+export PYTHONPATH=$PROJECT_DIR
+
 # Activate the virtual environment
 source $PROJECT_DIR/new_env/bin/activate
 
