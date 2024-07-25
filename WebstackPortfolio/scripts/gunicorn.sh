@@ -14,18 +14,19 @@ sudo chown ubuntu:ubuntu /run
 sudo chown -R ubuntu:ubuntu $PROJECT_DIR
 
 # Recreate the virtual environment if needed
-if [ ! -d "$PROJECT_DIR/WebstackPortfolio/new_env" ]; then
+if [ ! -d "$PROJECT_DIR/WebstackPortfolio/WebstackPortfolio/new_env" ]; then
     echo "Virtual environment not found. Creating a new one..."
-    python3 -m venv $PROJECT_DIR/WebstackPortfolio/new_env
+    python3 -m venv $PROJECT_DIR/WebstackPortfolio/WebstackPortfolio/new_env
 fi
 
 # Activate the virtual environment and install dependencies
-source $PROJECT_DIR/WebstackPortfolio/new_env/bin/activate
+source $PROJECT_DIR/WebstackPortfolio/WebstackPortfolio/new_env/bin/activate
 pip install --upgrade pip
 pip install -r $PROJECT_DIR/requirements.txt
+chmod 644 /home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio/requirements.txt
 
 # Fix shebang line in gunicorn if needed
-GUNICORN_EXECUTABLE="$PROJECT_DIR/WebstackPortfolio/new_env/bin/gunicorn"
+GUNICORN_EXECUTABLE="$PROJECT_DIR/WebstackPortfolio/WebstackPortfolio/new_env/bin/gunicorn"
 if [ -f "$GUNICORN_EXECUTABLE" ]; then
     CURRENT_SHEBANG=$(head -n 1 "$GUNICORN_EXECUTABLE")
     EXPECTED_SHEBANG="#!/home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio/new_env/bin/python3"
