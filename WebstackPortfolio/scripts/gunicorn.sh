@@ -4,7 +4,7 @@
 PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$PROJECT_DIR/new_env/bin/gunicorn"
-APP_MODULE="WebstackPortfolio.WebstackPortfolio.wsgi:application"
+APP_MODULE="WebstackPortfolio.wsgi:application"
 
 # Create the /run directory if it doesn't exist and set permissions
 sudo mkdir -p /run
