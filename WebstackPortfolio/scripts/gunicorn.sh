@@ -6,8 +6,12 @@ GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$PROJECT_DIR/new_env/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.wsgi:application"
 
+# Create the /run directory if it doesn't exist and set permissions
+sudo mkdir -p /run
+sudo chown ubuntu:ubuntu /run
+
 # Navigate to project directory
-cd $PROJECT_DIR/WebstackPortfolio || exit 1
+cd $PROJECT_DIR
 
 # Activate the virtual environment
 source $PROJECT_DIR/new_env/bin/activate
