@@ -24,6 +24,12 @@ fi
 # Activate the virtual environment and install dependencies
 source $VENV_DIR/bin/activate
 pip install --upgrade pip
+
+# Uninstall and reinstall Gunicorn to ensure it's correctly installed
+pip uninstall -y gunicorn
+pip install gunicorn
+
+# Install dependencies from requirements.txt
 if [ -f "$REQUIREMENTS_FILE" ]; then
     pip install -r $REQUIREMENTS_FILE
 else
