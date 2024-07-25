@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$PROJECT_DIR/new_env/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.WebstackPortfolio.wsgi:application"
