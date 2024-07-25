@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Stop Gunicorn
 sudo systemctl stop gunicorn

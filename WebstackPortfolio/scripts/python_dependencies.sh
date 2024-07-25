@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Define variables
 PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Start Gunicorn
 sudo systemctl start gunicorn

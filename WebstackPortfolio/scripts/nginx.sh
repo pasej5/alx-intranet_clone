@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Define variables
 NGINX_CONFIG="/etc/nginx/sites-available/webstackportfolio"

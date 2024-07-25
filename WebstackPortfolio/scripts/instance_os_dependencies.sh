@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/bash
+
+# Exit on any error
+set -e
 
 # Create the virtual environment if it doesn't exist
 if [ ! -d "/home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env" ]; then
