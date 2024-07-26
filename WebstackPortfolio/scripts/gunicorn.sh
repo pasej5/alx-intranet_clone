@@ -9,7 +9,7 @@ VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.wsgi:application"
-REQUIREMENTS_FILE="$PROJECT_DIR/../requirements.txt"  # Adjusted path to match your project structure
+REQUIREMENTS_FILE="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt"
 
 # Create the /run directory if it doesn't exist and set permissions
 sudo mkdir -p /run
@@ -24,7 +24,7 @@ if [ ! -d "$VENV_DIR" ]; then
     python3 -m venv $VENV_DIR
 fi
 
-# Activate the virtual environment and install dependencies
+# Activate the virtual environment
 source $VENV_DIR/bin/activate
 
 # Upgrade pip and reinstall Gunicorn
@@ -46,7 +46,7 @@ if [ -f "$GUNICORN_BIN" ]; then
     EXPECTED_SHEBANG="#!$VENV_DIR/bin/python3"
     if [ "$CURRENT_SHEBANG" != "$EXPECTED_SHEBANG" ]; then
         echo "Updating shebang line in gunicorn executable..."
-        sed -i "1s|$CURRENT_SHEBANG|$EXPECTED_SHEBANG|" "$GUNICORN_BIN"
+        sed -i "1s|.*|$EXPECTED_SHEBANG|" "$GUNICORN_BIN"
     fi
 else
     echo "Gunicorn executable not found. Please check your setup."
