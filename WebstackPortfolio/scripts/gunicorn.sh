@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Exit on error
 set -e
@@ -29,7 +29,7 @@ source $VENV_DIR/bin/activate
 
 # Upgrade pip and reinstall Gunicorn
 $VENV_DIR/bin/pip install --upgrade pip
-$VENV_DIR/bin/pip uninstall -y gunicorn || true  # Continue if gunicorn is not found
+$VENV_DIR/bin/pip uninstall -y gunicorn
 $VENV_DIR/bin/pip install gunicorn
 
 # Install dependencies from requirements.txt
