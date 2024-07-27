@@ -53,7 +53,6 @@ else
     exit 1
 fi
 
-# Set PYTHONPATH
 export PYTHONPATH=$PROJECT_DIR
 
 # Start Gunicorn
