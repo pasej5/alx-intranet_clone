@@ -4,12 +4,12 @@
 set -e
 
 # Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio"
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
 VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.wsgi:application"
-REQUIREMENTS_FILE="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt"
+REQUIREMENTS_FILE="$PROJECT_DIR/requirements.txt"
 
 # Create the /run directory if it doesn't exist and set permissions
 sudo mkdir -p /run
@@ -53,6 +53,7 @@ else
     exit 1
 fi
 
+# Set PYTHONPATH
 export PYTHONPATH=$PROJECT_DIR
 
 # Start Gunicorn
