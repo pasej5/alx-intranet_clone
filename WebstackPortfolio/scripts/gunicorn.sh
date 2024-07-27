@@ -4,57 +4,64 @@
 set -e
 
 # Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/WebstackPortfolio"
 VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
 APP_MODULE="WebstackPortfolio.wsgi:application"
 REQUIREMENTS_FILE="$PROJECT_DIR/requirements.txt"
 
-# Create the /run directory if it doesn't exist and set permissions
-sudo mkdir -p /run
-sudo chown ubuntu:ubuntu /run
-
-# Ensure the project directory has correct permissions
-sudo chown -R ubuntu:ubuntu $PROJECT_DIR
-
-# Recreate the virtual environment if needed
-if [ ! -d "$VENV_DIR" ]; then
-    echo "Virtual environment not found. Creating a new one..."
-    python3 -m venv $VENV_DIR
-fi
-
-# Activate the virtual environment
-source $VENV_DIR/bin/activate
-
-# Upgrade pip and reinstall Gunicorn
-pip install --upgrade pip
-pip uninstall -y gunicorn
-pip install gunicorn
-
-# Install dependencies from requirements.txt
-if [ -f "$REQUIREMENTS_FILE" ]; then
-    pip install -r $REQUIREMENTS_FILE
-else
-    echo "Requirements file not found at $REQUIREMENTS_FILE"
-    exit 1
-fi
-
-# Fix shebang line in gunicorn if needed
-if [ -f "$GUNICORN_BIN" ]; then
-    CURRENT_SHEBANG=$(head -n 1 "$GUNICORN_BIN")
-    EXPECTED_SHEBANG="#!$VENV_DIR/bin/python3"
-    if [ "$CURRENT_SHEBANG" != "$EXPECTED_SHEBANG" ]; then
-        echo "Updating shebang line in gunicorn executable..."
-        sed -i "1s|.*|$EXPECTED_SHEBANG|" "$GUNICORN_BIN"
+# Function to ensure the project directory exists and has correct permissions
+ensure_permissions() {
+    if [ ! -d "$PROJECT_DIR" ]; then
+        echo "Project directory not found: $PROJECT_DIR"
+        exit 1
     fi
-else
-    echo "Gunicorn executable not found. Please check your setup."
-    exit 1
-fi
 
-# Set PYTHONPATH
-export PYTHONPATH=$PROJECT_DIR
+    # Create the /run directory if it doesn't exist and set permissions
+    sudo mkdir -p /run
+    sudo chown ubuntu:ubuntu /run
 
-# Start Gunicorn
-exec $GUNICORN_BIN --bind unix:$GUNICORN_SOCKET --workers 3 --access-logfile - $APP_MODULE
+    # Ensure the project directory has correct permissions
+    sudo chown -R ubuntu:ubuntu $PROJECT_DIR
+}
+
+# Function to create or activate the virtual environment
+setup_virtualenv() {
+    if [ ! -d "$VENV_DIR" ]; then
+        echo "Virtual environment not found. Creating a new one..."
+        python3 -m venv $VENV_DIR
+    fi
+
+    echo "Activating virtual environment..."
+    source $VENV_DIR/bin/activate
+}
+
+# Function to install or upgrade dependencies
+install_dependencies() {
+    echo "Upgrading pip and reinstalling Gunicorn..."
+    $VENV_DIR/bin/pip install --upgrade pip
+    $VENV_DIR/bin/pip uninstall -y gunicorn || true
+    $VENV_DIR/bin/pip install gunicorn
+
+    echo "Installing dependencies from requirements.txt..."
+    if [ -f "$REQUIREMENTS_FILE" ]; then
+        $VENV_DIR/bin/pip install -r $REQUIREMENTS_FILE
+    else
+        echo "Requirements file not found at $REQUIREMENTS_FILE"
+        exit 1
+    fi
+}
+
+# Function to start Gunicorn
+start_gunicorn() {
+    echo "Starting Gunicorn..."
+    export PYTHONPATH=$PROJECT_DIR
+    exec $GUNICORN_BIN --bind unix:$GUNICORN_SOCKET --workers 3 --access-logfile - $APP_MODULE
+}
+
+# Main script execution
+ensure_permissions
+setup_virtualenv
+install_dependencies
+start_gunicorn
