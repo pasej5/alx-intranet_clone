@@ -13,6 +13,7 @@ REQUIREMENTS_FILE="$PROJECT_DIR/requirements.txt"
 
 # Function to ensure the project directory exists and has correct permissions
 ensure_permissions() {
+    echo "Checking project directory permissions..."
     if [ ! -d "$PROJECT_DIR" ]; then
         echo "Project directory not found: $PROJECT_DIR"
         exit 1
@@ -28,6 +29,7 @@ ensure_permissions() {
 
 # Function to create or activate the virtual environment
 setup_virtualenv() {
+    echo "Setting up virtual environment..."
     if [ ! -d "$VENV_DIR" ]; then
         echo "Virtual environment not found. Creating a new one..."
         python3 -m venv $VENV_DIR
@@ -65,3 +67,4 @@ ensure_permissions
 setup_virtualenv
 install_dependencies
 start_gunicorn
+
