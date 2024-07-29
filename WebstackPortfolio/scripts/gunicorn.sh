@@ -42,6 +42,10 @@ sudo chmod 777 /run
 # Ensure the logs directory exists
 mkdir -p $LOG_DIR
 
+# Ensure the log file is writable
+touch $GUNICORN_LOGFILE
+chmod 664 $GUNICORN_LOGFILE
+
 # Start Gunicorn server
 echo "Starting Gunicorn..."
 exec $GUNICORN_BIN --workers 3 --bind unix:$GUNICORN_SOCKET $APP_MODULE --log-file $GUNICORN_LOGFILE --log-level debug
