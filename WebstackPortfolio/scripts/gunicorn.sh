@@ -8,7 +8,7 @@ PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
 VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
-APP_MODULE="WebstackPortfolio.WebstackPortfolio.wsgi:application"
+APP_MODULE="WebstackPortfolio.wsgi:application"
 LOG_DIR="$PROJECT_DIR/logs"
 GUNICORN_LOGFILE="$LOG_DIR/gunicorn.log"
 
