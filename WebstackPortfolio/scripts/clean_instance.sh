@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 
 # Remove Gunicorn socket
