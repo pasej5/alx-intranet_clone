@@ -4,7 +4,7 @@
 set -e
 
 # Define variables
-PROJECT_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio"
+PROJECT_DIR="/home/ubuntu/alx-intranet_clone"
 VENV_DIR="$PROJECT_DIR/new_env"
 GUNICORN_SOCKET="/run/gunicorn.sock"
 GUNICORN_BIN="$VENV_DIR/bin/gunicorn"
