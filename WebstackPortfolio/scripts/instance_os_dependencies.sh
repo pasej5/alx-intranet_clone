@@ -3,22 +3,24 @@
 # Exit on any error
 set -e
 
-# Update and install system dependencies
+# Update and install necessary system packages
 sudo apt-get update
-sudo apt-get install -y nginx python3-pip python3-venv
+sudo apt-get install -y nginx python3-venv python3-pip
 
 # Create the virtual environment if it doesn't exist
-if [ ! -d "/home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env" ]; then
-    python3 -m venv /home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env
+VENV_DIR="/home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env"
+if [ ! -d "$VENV_DIR" ]; then
+    echo "Creating virtual environment..."
+    python3 -m venv $VENV_DIR
 fi
 
 # Activate the virtual environment
-source /home/ubuntu/alx-intranet_clone/WebstackPortfolio/new_env/bin/activate
+source $VENV_DIR/bin/activate
 
-# Upgrade pip and install Python dependencies
+# Upgrade pip
+echo "Upgrading pip..."
 pip install --upgrade pip
-pip install -r /home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt
 
-# Create necessary directories for logs if they do not exist
-mkdir -p /home/ubuntu/alx-intranet_clone/WebstackPortfolio/logs
-sudo chown -R ubuntu:ubuntu /home/ubuntu/alx-intranet_clone/WebstackPortfolio/logs
+# Install Python dependencies
+echo "Installing Python dependencies..."
+pip install -r /home/ubuntu/alx-intranet_clone/WebstackPortfolio/requirements.txt
