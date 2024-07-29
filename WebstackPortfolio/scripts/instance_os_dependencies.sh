@@ -3,7 +3,7 @@
 # Exit on any error
 set -e
 
-# Update and install necessary system packages
+# necessary system packages
 sudo apt-get update
 sudo apt-get install -y nginx python3-venv python3-pip
 
