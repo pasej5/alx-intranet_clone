@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/alx-intranet_clone/WebstackPortfolio
+    destination: /home/ubuntu/alx-intranet_clone
 permissions:
-  - object: /home/ubuntu/alx-intranet_clone/WebstackPortfolio
+  - object: /home/ubuntu/alx-intranet_clone
     owner: ubuntu
     group: ubuntu
 hooks:
