@@ -50,4 +50,4 @@ chmod 664 $GUNICORN_LOGFILE
 echo "Starting Gunicorn..."
 exec $GUNICORN_BIN --workers 3 --bind unix:$GUNICORN_SOCKET $APP_MODULE --log-file $GUNICORN_LOGFILE --log-level debug
 
-echo "Gunicorn started."
+echo "Gunicorn started successfully."
