@@ -35,6 +35,6 @@ mkdir -p $LOG_DIR
 
 # Start Gunicorn server
 echo "Starting Gunicorn..."
-$GUNICORN_BIN --workers 3 --bind unix:$GUNICORN_SOCKET $APP_MODULE --log-file $GUNICORN_LOGFILE --log-level debug
+exec $GUNICORN_BIN --workers 3 --bind unix:$GUNICORN_SOCKET $APP_MODULE --log-file $GUNICORN_LOGFILE --log-level debug
 
 echo "Gunicorn started."
